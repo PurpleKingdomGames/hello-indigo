@@ -5,13 +5,16 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 object HelloIndigo extends IndigoSandbox[Unit, Unit] {
 
   val config: indigo.GameConfig =
-    GameConfig.default
+    GameConfig.default.withMagnification(3)
 
   val animations: Set[indigo.Animation] =
     Set()
 
-  val assets: Set[indigo.AssetType] =
-    Set()
+  val assetName = AssetName("dots")
+
+  val assets: Set[indigo.AssetType] = Set(
+    AssetType.Image(AssetName("dots"), AssetPath("assets/dots.png"))
+  )
 
   val fonts: Set[indigo.FontInfo] =
     Set()
@@ -35,6 +38,8 @@ object HelloIndigo extends IndigoSandbox[Unit, Unit] {
       context: indigo.FrameContext,
       model: Unit
   ): indigo.SceneUpdateFragment =
-    SceneUpdateFragment.empty
+    SceneUpdateFragment(
+      Graphic(Rectangle(0, 0, 32, 32), 1, Material.Textured(assetName))
+    )
 
 }

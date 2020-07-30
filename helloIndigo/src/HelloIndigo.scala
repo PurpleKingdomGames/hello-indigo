@@ -6,26 +6,26 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
 
   val magnification = 3
 
-  val config: indigo.GameConfig =
+  val config: GameConfig =
     GameConfig.default.withMagnification(magnification)
 
-  val animations: Set[indigo.Animation] =
+  val animations: Set[Animation] =
     Set()
 
   val assetName = AssetName("dots")
 
-  val assets: Set[indigo.AssetType] =
+  val assets: Set[AssetType] =
     Set(
       AssetType.Image(AssetName("dots"), AssetPath("assets/dots.png"))
     )
 
-  val fonts: Set[indigo.FontInfo] =
+  val fonts: Set[FontInfo] =
     Set()
 
   def setup(
-      assetCollection: indigo.AssetCollection,
-      dice: indigo.Dice
-  ): indigo.Startup[indigo.StartupErrors, Unit] =
+      assetCollection: AssetCollection,
+      dice: Dice
+  ): Startup[StartupErrors, Unit] =
     Startup.Success(())
 
   def initialModel(startupData: Unit): Model =
@@ -34,9 +34,9 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
     )
 
   def updateModel(
-      context: indigo.FrameContext,
+      context: FrameContext[Unit],
       model: Model
-  ): indigo.GlobalEvent => indigo.Outcome[Model] = {
+  ): GlobalEvent => Outcome[Model] = {
     case MouseEvent.Click(x, y) =>
       val adjustedPosition = Point(x, y) - model.center
 
@@ -62,9 +62,9 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
   }
 
   def present(
-      context: indigo.FrameContext,
+      context: FrameContext[Unit],
       model: Model
-  ): indigo.SceneUpdateFragment =
+  ): SceneUpdateFragment =
     SceneUpdateFragment(
       Graphic(Rectangle(0, 0, 32, 32), 1, Material.Textured(assetName))
     ).addGameLayerNodes(

@@ -7,8 +7,8 @@ import mill.scalajslib.api._
 import $ivy.`io.indigoengine::mill-indigo:0.1.0`, millindigo._
 
 object helloindigo extends ScalaJSModule with MillIndigo {
-  def scalaVersion = "2.13.2"
-  def scalaJSVersion = "1.0.1"
+  def scalaVersion = "2.13.3"
+  def scalaJSVersion = "1.1.0"
 
   val gameAssetsDirectory: os.Path = os.pwd / "assets"
   val showCursor: Boolean = true
@@ -22,7 +22,7 @@ object helloindigo extends ScalaJSModule with MillIndigo {
     }
   }
 
-  val indigoVersion = "0.1.0"
+  val indigoVersion = "0.2.0"
 
   def ivyDeps = Agg(
     ivy"io.indigoengine::indigo-json-circe::$indigoVersion",
@@ -69,7 +69,6 @@ object ScalacOptions {
       "-Xlint:inaccessible", // Warn about inaccessible types in method signatures.
       "-Xlint:infer-any", // Warn when a type argument is inferred to be `Any`.
       "-Xlint:missing-interpolator", // A string literal appears to be missing an interpolator id.
-      "-Xlint:nullary-override", // Warn when non-nullary `def f()' overrides nullary `def f'.
       "-Xlint:nullary-unit", // Warn when nullary methods return Unit.
       "-Xlint:option-implicit", // Option.apply used implicit view.
       "-Xlint:package-object-classes", // Class or object defined in package object.

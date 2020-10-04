@@ -25,7 +25,7 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
   def setup(
       assetCollection: AssetCollection,
       dice: Dice
-  ): Startup[StartupErrors, Unit] =
+  ): Startup[Unit] =
     Startup.Success(())
 
   def initialModel(startupData: Unit): Model =

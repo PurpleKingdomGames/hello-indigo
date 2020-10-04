@@ -3,3 +3,4 @@ out/
 .metals/
 .DS_Store
 .vscode
+.dotty-ide-disabled

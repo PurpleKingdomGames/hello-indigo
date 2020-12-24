@@ -14,4 +14,4 @@ jobs:
     # the server process is kept alive across steps,
     # so separate invocations of mill remain extremely fast!
     - name: Test
-      run: mill project.test
+      run: mill helloindigo.test

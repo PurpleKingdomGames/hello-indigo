@@ -22,6 +22,9 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
   val fonts: Set[FontInfo] =
     Set()
 
+  val shaders: Set[Shader] =
+    Set()
+
   def setup(
       assetCollection: AssetCollection,
       dice: Dice
@@ -69,9 +72,8 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
   ): Outcome[SceneUpdateFragment] =
     Outcome(
       SceneUpdateFragment(
-        Graphic(Rectangle(0, 0, 32, 32), 1, Material.Textured(assetName))
-      ).addGameLayerNodes(
-        drawDots(model.center, model.dots)
+        Graphic(Rectangle(0, 0, 32, 32), 1, Material.Bitmap(assetName)) ::
+          drawDots(model.center, model.dots)
       )
     )
 
@@ -85,7 +87,7 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
         (Math.cos(dot.angle.value) * dot.orbitDistance + center.y).toInt
       )
 
-      Graphic(Rectangle(0, 0, 32, 32), 1, Material.Textured(assetName))
+      Graphic(Rectangle(0, 0, 32, 32), 1, Material.Bitmap(assetName))
         .withCrop(Rectangle(16, 16, 16, 16))
         .withRef(8, 8)
         .moveTo(position)

@@ -83,8 +83,8 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
   ): List[Graphic] =
     dots.map { dot =>
       val position = Point(
-        (Math.sin(dot.angle.value) * dot.orbitDistance + center.x).toInt,
-        (Math.cos(dot.angle.value) * dot.orbitDistance + center.y).toInt
+        (Math.sin(dot.angle.toDouble) * dot.orbitDistance + center.x).toInt,
+        (Math.cos(dot.angle.toDouble) * dot.orbitDistance + center.y).toInt
       )
 
       Graphic(Rectangle(0, 0, 32, 32), 1, Material.Bitmap(assetName))

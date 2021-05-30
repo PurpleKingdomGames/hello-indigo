@@ -4,7 +4,7 @@ import mill.scalalib._
 import mill.scalajslib._
 import mill.scalajslib.api._
 
-import $ivy.`io.indigoengine::mill-indigo:0.8.0`, millindigo._
+import $ivy.`io.indigoengine::mill-indigo:0.8.2`, millindigo._
 
 object helloindigo extends ScalaJSModule with MillIndigo {
   def scalaVersion   = "3.0.0"
@@ -32,7 +32,7 @@ object helloindigo extends ScalaJSModule with MillIndigo {
     }
   }
 
-  val indigoVersion = "0.8.0"
+  val indigoVersion = "0.8.2"
 
   def ivyDeps =
     Agg(

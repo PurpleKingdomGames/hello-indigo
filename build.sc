@@ -4,7 +4,7 @@ import mill.scalalib._
 import mill.scalajslib._
 import mill.scalajslib.api._
 
-import $ivy.`io.indigoengine::mill-indigo:0.9.1`, millindigo._
+import $ivy.`io.indigoengine::mill-indigo:0.9.2`, millindigo._
 
 object helloindigo extends ScalaJSModule with MillIndigo {
   def scalaVersion   = "3.0.2"
@@ -32,7 +32,7 @@ object helloindigo extends ScalaJSModule with MillIndigo {
     }
   }
 
-  val indigoVersion = "0.9.1"
+  val indigoVersion = "0.9.2"
 
   def ivyDeps =
     Agg(
@@ -63,9 +63,9 @@ object ScalacOptions {
     Seq(
       "-deprecation", // Emit warning and location for usages of deprecated APIs.
       "-encoding",
-      "utf-8",                         // Specify character encoding used by source files.
-      "-feature",                      // Emit warning and location for usages of features that should be imported explicitly.
-      "-language:existentials",        // Existential types (besides wildcard types) can be written and inferred
+      "utf-8",                  // Specify character encoding used by source files.
+      "-feature",               // Emit warning and location for usages of features that should be imported explicitly.
+      "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
       "-language:experimental.macros", // Allow macro definition (besides implementation and application)
       "-language:higherKinds",         // Allow higher-kinded types
       "-language:implicitConversions", // Allow definition of implicit functions called views
@@ -78,9 +78,9 @@ object ScalacOptions {
     Seq(
       "-deprecation", // Emit warning and location for usages of deprecated APIs.
       "-encoding",
-      "utf-8",                         // Specify character encoding used by source files.
-      "-feature",                      // Emit warning and location for usages of features that should be imported explicitly.
-      "-language:existentials",        // Existential types (besides wildcard types) can be written and inferred
+      "utf-8",                  // Specify character encoding used by source files.
+      "-feature",               // Emit warning and location for usages of features that should be imported explicitly.
+      "-language:existentials", // Existential types (besides wildcard types) can be written and inferred
       "-language:experimental.macros", // Allow macro definition (besides implementation and application)
       "-language:higherKinds",         // Allow higher-kinded types
       "-language:implicitConversions", // Allow definition of implicit functions called views

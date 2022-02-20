@@ -4,17 +4,18 @@ import mill.scalalib._
 import mill.scalajslib._
 import mill.scalajslib.api._
 
-import $ivy.`io.indigoengine::mill-indigo:0.11.0`, millindigo._
+import $ivy.`io.indigoengine::mill-indigo:0.12.1`, millindigo._
 
 object helloindigo extends ScalaJSModule with MillIndigo {
-  def scalaVersion   = "3.1.0"
-  def scalaJSVersion = "1.8.0"
+  def scalaVersion   = "3.1.1"
+  def scalaJSVersion = "1.9.0"
 
-  val gameAssetsDirectory: os.Path = os.pwd / "assets"
-  val showCursor: Boolean          = true
-  val title: String                = "Hello, Indigo!"
-  val windowStartWidth: Int        = 550
-  val windowStartHeight: Int       = 400
+  val gameAssetsDirectory: os.Path   = os.pwd / "assets"
+  val showCursor: Boolean            = true
+  val title: String                  = "Hello, Indigo!"
+  val windowStartWidth: Int          = 550
+  val windowStartHeight: Int         = 400
+  val disableFrameRateLimit: Boolean = false
 
   def buildGame() = T.command {
     T {
@@ -32,7 +33,7 @@ object helloindigo extends ScalaJSModule with MillIndigo {
     }
   }
 
-  val indigoVersion = "0.11.0"
+  val indigoVersion = "0.12.1"
 
   def ivyDeps =
     Agg(
@@ -43,8 +44,6 @@ object helloindigo extends ScalaJSModule with MillIndigo {
 
   def scalacOptions = super.scalacOptions() ++ ScalacOptions.compile
 
-  override def useECMAScript2015 = T(true)
-
   object test extends Tests {
     def ivyDeps = Agg(
       ivy"org.scalameta::munit::0.7.29"
@@ -52,9 +51,8 @@ object helloindigo extends ScalaJSModule with MillIndigo {
 
     def testFramework = "munit.Framework"
 
-    override def moduleKind        = T(mill.scalajslib.api.ModuleKind.CommonJSModule)
-    override def jsEnvConfig       = T(JsEnvConfig.NodeJs(args = List("--dns-result-order=ipv4first")))
-    override def useECMAScript2015 = T(true)
+    override def moduleKind  = T(mill.scalajslib.api.ModuleKind.CommonJSModule)
+    override def jsEnvConfig = T(JsEnvConfig.NodeJs(args = List("--dns-result-order=ipv4first")))
 
     def scalacOptions = super.scalacOptions() ++ ScalacOptions.test
   }

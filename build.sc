@@ -17,7 +17,7 @@ object helloindigo extends ScalaJSModule with MillIndigo {
   val windowStartHeight: Int         = 400
   val disableFrameRateLimit: Boolean = false
   val backgroundColor: String        = "black"
-  val electronInstall                = indigoplugin.ElectronInstall.Global
+  val electronInstall                = indigoplugin.ElectronInstall.Latest
 
   def buildGame() = T.command {
     T {

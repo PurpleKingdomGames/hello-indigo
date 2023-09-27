@@ -42,13 +42,13 @@ object HelloIndigo extends IndigoSandbox[Unit, Model] {
       context: FrameContext[Unit],
       model: Model
   ): GlobalEvent => Outcome[Model] = {
-    case MouseEvent.Click(pt) =>
-      val adjustedPosition = pt - model.center
+    case e: MouseEvent.Click =>
+      val adjustedPosition = e.position - model.center
 
       Outcome(
         model.addDot(
           Dot(
-            Point.distanceBetween(model.center, pt).toInt,
+            Point.distanceBetween(model.center, e.position).toInt,
             Radians(
               Math.atan2(
                 adjustedPosition.x.toDouble,
